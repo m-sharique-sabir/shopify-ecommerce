@@ -1,0 +1,2477 @@
+{%- liquid
+  assign collection = section.settings.collection
+  assign heading = section.settings.heading
+  assign description = section.settings.description
+  assign button_label = section.settings.button_label
+  assign button_url = section.settings.button_url
+  assign view_all_label = section.settings.view_all_label
+  assign view_all_url = section.settings.view_all_url
+  assign product_limit = section.settings.product_limit | default: 12
+  assign image_ratio = section.settings.image_ratio | default: 'square'
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed | default: 5000
+  assign infinite_loop = section.settings.infinite_loop
+  assign show_quick_view = section.settings.show_quick_view
+  assign show_badges = section.settings.show_badges
+  assign reduced_motion = section.settings.reduced_motion
+  assign desktop_cards = section.settings.desktop_cards | default: 4
+  assign tablet_cards = section.settings.tablet_cards | default: 2
+  assign mobile_cards = section.settings.mobile_cards | default: 1
+  
+  assign section_bg = section.settings.section_background | default: '#ffffff'
+  assign section_padding_top = section.settings.section_padding_top | default: 60
+  assign section_padding_bottom = section.settings.section_padding_bottom | default: 60
+  assign left_panel_bg = section.settings.left_panel_background | default: '#ffffff'
+  assign left_panel_text = section.settings.left_panel_text_color | default: '#000000'
+  assign left_panel_border_radius = section.settings.left_panel_border_radius | default: 12
+  assign left_panel_padding_top = section.settings.left_panel_padding_top | default: 24
+  assign left_panel_padding_bottom = section.settings.left_panel_padding_bottom | default: 24
+  assign left_panel_padding_left = section.settings.left_panel_padding_left | default: 24
+  assign left_panel_padding_right = section.settings.left_panel_padding_right | default: 24
+  assign right_panel_bg = section.settings.right_panel_background | default: '#ffffff'
+  assign right_panel_border_radius = section.settings.right_panel_border_radius | default: 12
+  assign card_bg = section.settings.card_background | default: '#f5f5f5'
+  assign card_text = section.settings.card_text_color | default: '#000000'
+  assign card_border_radius = section.settings.card_border_radius | default: 12
+  assign card_padding = section.settings.card_padding | default: 16
+  assign card_gap = section.settings.card_gap | default: 20
+  assign panel_gap = section.settings.panel_gap | default: 24
+  assign slider_padding_top = section.settings.slider_padding_top | default: 20
+  assign slider_padding_bottom = section.settings.slider_padding_bottom | default: 20
+  assign slider_padding_left = section.settings.slider_padding_left | default: 20
+  assign slider_padding_right = section.settings.slider_padding_right | default: 20
+  assign arrow_offset = section.settings.arrow_offset | default: 12
+  assign arrow_size = section.settings.arrow_size | default: 40
+  assign arrow_bg = section.settings.arrow_background_color | default: '#ffffff'
+  assign arrow_color = section.settings.arrow_icon_color | default: '#000000'
+  assign arrow_border_radius = section.settings.arrow_border_radius | default: 50
+  assign show_arrows_mobile = section.settings.show_arrows_mobile
+  assign pagination_inactive = section.settings.pagination_inactive_color | default: '#cccccc'
+  assign pagination_active = section.settings.pagination_active_color | default: '#000000'
+  assign pagination_dot_size = section.settings.pagination_dot_size | default: 8
+  assign show_pagination = section.settings.show_pagination
+  assign sale_badge_color = section.settings.sale_badge_color | default: '#e74c3c'
+  assign soldout_badge_color = section.settings.soldout_badge_color | default: '#333333'
+  assign show_price = section.settings.show_price
+  assign show_add_to_cart = section.settings.show_add_to_cart
+  assign button_bg = section.settings.button_background_color | default: '#000000'
+  assign button_text_color = section.settings.button_text_color | default: '#ffffff'
+  assign desktop_layout = section.settings.desktop_layout_direction | default: 'ltr'
+  assign mobile_layout = section.settings.mobile_layout_direction | default: 'top'
+  assign mobile_panel_gap = section.settings.mobile_panel_gap | default: 20
+  
+  # Font Control Variables - Collection Title
+  assign title_use_google = section.settings.title_use_google_font | default: false
+  assign title_font_url = section.settings.title_google_font_url
+  assign title_font_family = section.settings.title_google_font_family
+  assign title_font_weight = section.settings.title_font_weight | default: '700'
+  assign title_font_size_desktop = section.settings.title_font_size_desktop | default: 32
+  assign title_font_size_mobile = section.settings.title_font_size_mobile | default: 24
+  
+  # Font Control Variables - Description
+  assign desc_use_google = section.settings.desc_use_google_font | default: false
+  assign desc_font_url = section.settings.desc_google_font_url
+  assign desc_font_family = section.settings.desc_google_font_family
+  assign desc_font_weight = section.settings.desc_font_weight | default: '400'
+  assign desc_font_size_desktop = section.settings.desc_font_size_desktop | default: 16
+  assign desc_font_size_mobile = section.settings.desc_font_size_mobile | default: 14
+  
+  # Font Control Variables - CTA Button
+  assign btn_use_google = section.settings.btn_use_google_font | default: false
+  assign btn_font_url = section.settings.btn_google_font_url
+  assign btn_font_family = section.settings.btn_google_font_family
+  assign btn_font_weight = section.settings.btn_font_weight | default: '600'
+  assign btn_font_size_desktop = section.settings.btn_font_size_desktop | default: 15
+  assign btn_font_size_mobile = section.settings.btn_font_size_mobile | default: 14
+  
+  # Font Control Variables - View All Link
+  assign viewall_use_google = section.settings.viewall_use_google_font | default: false
+  assign viewall_font_url = section.settings.viewall_google_font_url
+  assign viewall_font_family = section.settings.viewall_google_font_family
+  assign viewall_font_weight = section.settings.viewall_font_weight | default: '600'
+  assign viewall_font_size_desktop = section.settings.viewall_font_size_desktop | default: 15
+  assign viewall_font_size_mobile = section.settings.viewall_font_size_mobile | default: 14
+  
+  # Font Control Variables - Product Title
+  assign product_title_use_google = section.settings.product_title_use_google_font | default: false
+  assign product_title_font_url = section.settings.product_title_google_font_url
+  assign product_title_font_family = section.settings.product_title_google_font_family
+  assign product_title_font_weight = section.settings.product_title_font_weight | default: '600'
+  assign product_title_font_size_desktop = section.settings.product_title_font_size_desktop | default: 15
+  assign product_title_font_size_mobile = section.settings.product_title_font_size_mobile | default: 14
+  
+  # Font Control Variables - Product Price
+  assign product_price_use_google = section.settings.product_price_use_google_font | default: false
+  assign product_price_font_url = section.settings.product_price_google_font_url
+  assign product_price_font_family = section.settings.product_price_google_font_family
+  assign product_price_font_weight = section.settings.product_price_font_weight | default: '700'
+  assign product_price_font_size_desktop = section.settings.product_price_font_size_desktop | default: 16
+  assign product_price_font_size_mobile = section.settings.product_price_font_size_mobile | default: 14
+  
+  # Font Control Variables - Add to Cart Button
+  assign atc_use_google = section.settings.atc_use_google_font | default: false
+  assign atc_font_url = section.settings.atc_google_font_url
+  assign atc_font_family = section.settings.atc_google_font_family
+  assign atc_font_weight = section.settings.atc_font_weight | default: '600'
+  assign atc_font_size_desktop = section.settings.atc_font_size_desktop | default: 14
+  assign atc_font_size_mobile = section.settings.atc_font_size_mobile | default: 13
+  
+  # Font Control Variables - Sale Badge
+  assign sale_badge_use_google = section.settings.sale_badge_use_google_font | default: false
+  assign sale_badge_font_url = section.settings.sale_badge_google_font_url
+  assign sale_badge_font_family = section.settings.sale_badge_google_font_family
+  assign sale_badge_font_weight = section.settings.sale_badge_font_weight | default: '700'
+  assign sale_badge_font_size = section.settings.sale_badge_font_size | default: 11
+  
+  # Font Control Variables - Sold Out Badge
+  assign soldout_badge_use_google = section.settings.soldout_badge_use_google_font | default: false
+  assign soldout_badge_font_url = section.settings.soldout_badge_google_font_url
+  assign soldout_badge_font_family = section.settings.soldout_badge_google_font_family
+  assign soldout_badge_font_weight = section.settings.soldout_badge_font_weight | default: '700'
+  assign soldout_badge_font_size = section.settings.soldout_badge_font_size | default: 12
+  
+  case image_ratio
+    when 'square'
+      assign image_aspect = '1 / 1'
+    when 'portrait'
+      assign image_aspect = '4 / 5'
+    when 'landscape'
+      assign image_aspect = '4 / 3'
+    else
+      assign image_aspect = '1 / 1'
+  endcase
+-%}
+
+{%- comment -%} Load Google Fonts conditionally for all text elements {%- endcomment -%}
+{%- if title_use_google and title_font_url != blank -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ title_font_url }}">
+{%- endif -%}
+{%- if desc_use_google and desc_font_url != blank -%}
+  <link rel="stylesheet" href="{{ desc_font_url }}">
+{%- endif -%}
+{%- if btn_use_google and btn_font_url != blank -%}
+  <link rel="stylesheet" href="{{ btn_font_url }}">
+{%- endif -%}
+{%- if viewall_use_google and viewall_font_url != blank -%}
+  <link rel="stylesheet" href="{{ viewall_font_url }}">
+{%- endif -%}
+{%- if product_title_use_google and product_title_font_url != blank -%}
+  <link rel="stylesheet" href="{{ product_title_font_url }}">
+{%- endif -%}
+{%- if product_price_use_google and product_price_font_url != blank -%}
+  <link rel="stylesheet" href="{{ product_price_font_url }}">
+{%- endif -%}
+{%- if atc_use_google and atc_font_url != blank -%}
+  <link rel="stylesheet" href="{{ atc_font_url }}">
+{%- endif -%}
+{%- if sale_badge_use_google and sale_badge_font_url != blank -%}
+  <link rel="stylesheet" href="{{ sale_badge_font_url }}">
+{%- endif -%}
+{%- if soldout_badge_use_google and soldout_badge_font_url != blank -%}
+  <link rel="stylesheet" href="{{ soldout_badge_font_url }}">
+{%- endif -%}
+
+<div class="ams-carousel ams-carousel--desktop-{{ desktop_layout }} ams-carousel--mobile-{{ mobile_layout }}{% unless show_arrows_mobile %} ams-carousel--no-mobile-arrows{% endunless %}" id="ams-carousel-{{ section.id }}" data-autoplay="{{ autoplay }}" data-autoplay-speed="{{ autoplay_speed }}" data-infinite="{{ infinite_loop }}" data-reduced-motion="{{ reduced_motion }}" data-desktop-cards="{{ desktop_cards }}" data-tablet-cards="{{ tablet_cards }}" data-mobile-cards="{{ mobile_cards }}" data-show-pagination="{{ show_pagination }}" style="--section-bg: {{ section_bg }}; --section-padding-top: {{ section_padding_top }}px; --section-padding-bottom: {{ section_padding_bottom }}px; --left-panel-bg: {{ left_panel_bg }}; --left-panel-text: {{ left_panel_text }}; --left-panel-border-radius: {{ left_panel_border_radius }}px; --left-panel-padding-top: {{ left_panel_padding_top }}px; --left-panel-padding-bottom: {{ left_panel_padding_bottom }}px; --left-panel-padding-left: {{ left_panel_padding_left }}px; --left-panel-padding-right: {{ left_panel_padding_right }}px; --right-panel-bg: {{ right_panel_bg }}; --right-panel-border-radius: {{ right_panel_border_radius }}px; --card-bg: {{ card_bg }}; --card-text: {{ card_text }}; --card-border-radius: {{ card_border_radius }}px; --card-padding: {{ card_padding }}px; --card-gap: {{ card_gap }}px; --desktop-cards: {{ desktop_cards }}; --tablet-cards: {{ tablet_cards }}; --mobile-cards: {{ mobile_cards }}; --panel-gap: {{ panel_gap }}px; --mobile-panel-gap: {{ mobile_panel_gap }}px; --slider-padding-top: {{ slider_padding_top }}px; --slider-padding-bottom: {{ slider_padding_bottom }}px; --slider-padding-left: {{ slider_padding_left }}px; --slider-padding-right: {{ slider_padding_right }}px; --arrow-offset: {{ arrow_offset }}px; --arrow-size: {{ arrow_size }}px; --arrow-bg: {{ arrow_bg }}; --arrow-color: {{ arrow_color }}; --arrow-border-radius: {{ arrow_border_radius }}px; --pagination-inactive: {{ pagination_inactive }}; --pagination-active: {{ pagination_active }}; --pagination-dot-size: {{ pagination_dot_size }}px; --sale-badge-color: {{ sale_badge_color }}; --soldout-badge-color: {{ soldout_badge_color }}; --button-bg: {{ button_bg }}; --button-text: {{ button_text_color }}; --font-title: {% if title_use_google and title_font_family != blank %}'{{ title_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-title-weight: {{ title_font_weight }}; --font-title-size: {{ title_font_size_desktop }}px; --font-title-size-mobile: {{ title_font_size_mobile }}px; --font-desc: {% if desc_use_google and desc_font_family != blank %}'{{ desc_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-desc-weight: {{ desc_font_weight }}; --font-desc-size: {{ desc_font_size_desktop }}px; --font-desc-size-mobile: {{ desc_font_size_mobile }}px; --font-btn: {% if btn_use_google and btn_font_family != blank %}'{{ btn_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-btn-weight: {{ btn_font_weight }}; --font-btn-size: {{ btn_font_size_desktop }}px; --font-btn-size-mobile: {{ btn_font_size_mobile }}px; --font-viewall: {% if viewall_use_google and viewall_font_family != blank %}'{{ viewall_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-viewall-weight: {{ viewall_font_weight }}; --font-viewall-size: {{ viewall_font_size_desktop }}px; --font-viewall-size-mobile: {{ viewall_font_size_mobile }}px; --font-product-title: {% if product_title_use_google and product_title_font_family != blank %}'{{ product_title_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-product-title-weight: {{ product_title_font_weight }}; --font-product-title-size: {{ product_title_font_size_desktop }}px; --font-product-title-size-mobile: {{ product_title_font_size_mobile }}px; --font-product-price: {% if product_price_use_google and product_price_font_family != blank %}'{{ product_price_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-product-price-weight: {{ product_price_font_weight }}; --font-product-price-size: {{ product_price_font_size_desktop }}px; --font-product-price-size-mobile: {{ product_price_font_size_mobile }}px; --font-atc: {% if atc_use_google and atc_font_family != blank %}'{{ atc_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-atc-weight: {{ atc_font_weight }}; --font-atc-size: {{ atc_font_size_desktop }}px; --font-atc-size-mobile: {{ atc_font_size_mobile }}px; --font-sale-badge: {% if sale_badge_use_google and sale_badge_font_family != blank %}'{{ sale_badge_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-sale-badge-weight: {{ sale_badge_font_weight }}; --font-sale-badge-size: {{ sale_badge_font_size }}px; --font-soldout-badge: {% if soldout_badge_use_google and soldout_badge_font_family != blank %}'{{ soldout_badge_font_family }}', sans-serif{% else %}inherit{% endif %}; --font-soldout-badge-weight: {{ soldout_badge_font_weight }}; --font-soldout-badge-size: {{ soldout_badge_font_size }}px;">
+  <div class="ams-carousel__container">
+    
+    {%- comment -%} LEFT PANEL - Static Content {%- endcomment -%}
+    <div class="ams-carousel__left-panel">
+      <div class="ams-carousel__left-content">
+        {%- if heading != blank -%}
+          <h2 class="ams-carousel__heading">{{ heading }}</h2>
+        {%- endif -%}
+        
+        {%- if description != blank -%}
+          <p class="ams-carousel__description">{{ description }}</p>
+        {%- endif -%}
+        
+        {%- if button_label != blank -%}
+          <a href="{{ button_url | default: '#' }}" class="ams-carousel__button">
+            {{ button_label }}
+          </a>
+        {%- endif -%}
+        
+        {%- if view_all_label != blank -%}
+          <a href="{{ view_all_url | default: '#' }}" class="ams-carousel__view-all">
+            {{ view_all_label }}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+    
+    {%- comment -%} RIGHT PANEL - Carousel {%- endcomment -%}
+    <div class="ams-carousel__right-panel">
+      <div class="ams-carousel__carousel-wrapper">
+        
+        {%- comment -%} Navigation Arrows {%- endcomment -%}
+        <button type="button" class="ams-carousel__arrow ams-carousel__arrow--prev" aria-label="Previous slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
+        {%- comment -%} Carousel Track {%- endcomment -%}
+        <div class="ams-carousel__viewport">
+          <div class="ams-carousel__track" data-carousel-track style="--image-aspect: {{ image_aspect }}">
+            {%- if collection != blank -%}
+              {%- for product in collection.products limit: product_limit -%}
+                {%- liquid
+                  assign is_new = false
+                  assign is_bestseller = false
+                  for tag in product.tags
+                    if tag == 'new' or tag == 'New'
+                      assign is_new = true
+                    endif
+                    if tag == 'bestseller' or tag == 'Bestseller'
+                      assign is_bestseller = true
+                    endif
+                  endfor
+                -%}
+                <div class="ams-carousel__slide" data-carousel-slide>
+                  <div class="ams-carousel__card">
+                    
+                    {%- comment -%} Product Image Container {%- endcomment -%}
+                    <div class="ams-carousel__card-image-wrapper">
+                      <a href="{{ product.url }}" class="ams-carousel__card-image-link">
+                        {%- if product.featured_image -%}
+                          {%- if image_ratio == 'square' -%}
+                            <img 
+                              src="{{ product.featured_image | image_url: width: 400, height: 400, crop: 'center' }}"
+                              alt="{{ product.featured_image.alt | escape }}"
+                              class="ams-carousel__card-image"
+                              loading="lazy"
+                              width="400"
+                              height="400"
+                            >
+                          {%- elsif image_ratio == 'portrait' -%}
+                            <img 
+                              src="{{ product.featured_image | image_url: width: 400, height: 500, crop: 'center' }}"
+                              alt="{{ product.featured_image.alt | escape }}"
+                              class="ams-carousel__card-image"
+                              loading="lazy"
+                              width="400"
+                              height="500"
+                            >
+                          {%- else -%}
+                            <img 
+                              src="{{ product.featured_image | image_url: width: 400, height: 300, crop: 'center' }}"
+                              alt="{{ product.featured_image.alt | escape }}"
+                              class="ams-carousel__card-image"
+                              loading="lazy"
+                              width="400"
+                              height="300"
+                            >
+                          {%- endif -%}
+                        {%- else -%}
+                          <div class="ams-carousel__card-image-placeholder">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                              <circle cx="18" cy="18" r="4" stroke="currentColor" stroke-width="2"/>
+                              <path d="M40 32L32 24L20 36" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </div>
+                        {%- endif -%}
+                      </a>
+                      
+                      {%- if show_badges -%}
+                        {%- comment -%} New Badge {%- endcomment -%}
+                        {%- if is_new -%}
+                          <span class="ams-carousel__badge ams-carousel__badge--new">
+                            New
+                          </span>
+                        {%- endif -%}
+                        
+                        {%- comment -%} Bestseller Badge {%- endcomment -%}
+                        {%- if is_bestseller -%}
+                          <span class="ams-carousel__badge ams-carousel__badge--bestseller">
+                            Bestseller
+                          </span>
+                        {%- endif -%}
+                        
+                        {%- comment -%} Sale Badge {%- endcomment -%}
+                        {%- if product.compare_at_price > product.price -%}
+                          {%- assign sale_percent = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round -%}
+                          <span class="ams-carousel__badge ams-carousel__badge--sale">
+                            -{{ sale_percent }}%
+                          </span>
+                        {%- endif -%}
+                        
+                        {%- comment -%} Sold Out Badge {%- endcomment -%}
+                        {%- unless product.available -%}
+                          <span class="ams-carousel__badge ams-carousel__badge--soldout">
+                            Sold Out
+                          </span>
+                        {%- endunless -%}
+                      {%- endif -%}
+                      
+                      {%- comment -%} Quick View Button {%- endcomment -%}
+                      {%- if show_quick_view -%}
+                        <button type="button" class="ams-carousel__quick-view" data-quick-view data-product-handle="{{ product.handle }}" aria-label="Quick view {{ product.title }}">
+                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 3.5C4.5 3.5 1 10 1 10C1 10 4.5 16.5 10 16.5C15.5 16.5 19 10 19 10C19 10 15.5 3.5 10 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+                          </svg>
+                        </button>
+                      {%- endif -%}
+                    </div>
+                    
+                    {%- comment -%} Product Info {%- endcomment -%}
+                    <div class="ams-carousel__card-content">
+                      <h3 class="ams-carousel__card-title">
+                        <a href="{{ product.url }}">{{ product.title }}</a>
+                      </h3>
+                      
+                      {%- if show_price -%}
+                        <div class="ams-carousel__card-price">
+                          {%- if product.compare_at_price > product.price -%}
+                            <span class="ams-carousel__price ams-carousel__price--sale">
+                              {{ product.price | money }}
+                            </span>
+                            <span class="ams-carousel__price ams-carousel__price--compare">
+                              {{ product.compare_at_price | money }}
+                            </span>
+                          {%- else -%}
+                            <span class="ams-carousel__price">
+                              {{ product.price | money }}
+                            </span>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                      
+                      {%- if show_add_to_cart -%}
+                        {%- comment -%} Add to Cart / View Product Button {%- endcomment -%}
+                        <div class="ams-carousel__card-action">
+                          {%- if product.available -%}
+                            <form method="post" action="{{ routes.cart_add_url }}">
+                              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                              <button type="submit" class="ams-carousel__card-button">
+                                Add to Cart
+                              </button>
+                            </form>
+                          {%- else -%}
+                            <a href="{{ product.url }}" class="ams-carousel__card-button ams-carousel__card-button--secondary">
+                              View Product
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endif -%}
+                    </div>
+                    
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              {%- comment -%} Placeholder products when no collection selected {%- endcomment -%}
+              {%- for i in (1..8) -%}
+                {%- assign placeholder_index = forloop.index0 | modulo: 6 | plus: 1 -%}
+                <div class="ams-carousel__slide" data-carousel-slide>
+                  <div class="ams-carousel__card ams-carousel__card--placeholder">
+                    <div class="ams-carousel__card-image-wrapper">
+                      <div class="ams-carousel__card-image-placeholder">
+                        {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'ams-carousel__placeholder-svg' }}
+                      </div>
+                    </div>
+                    <div class="ams-carousel__card-content">
+                      <h3 class="ams-carousel__card-title">Product {{ i }}</h3>
+                      {%- if show_price -%}
+                        <div class="ams-carousel__card-price">
+                          <span class="ams-carousel__price">$19.99</span>
+                        </div>
+                      {%- endif -%}
+                      {%- if show_add_to_cart -%}
+                        <div class="ams-carousel__card-action">
+                          <span class="ams-carousel__card-button">Add to Cart</span>
+                        </div>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        </div>
+        
+        <button type="button" class="ams-carousel__arrow ams-carousel__arrow--next" aria-label="Next slide">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        
+      </div>
+      
+      {%- comment -%} Pagination Dots {%- endcomment -%}
+      {%- if show_pagination -%}
+        <div class="ams-carousel__pagination" data-carousel-pagination></div>
+      {%- endif -%}
+      
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .ams-carousel {
+    width: 100%;
+    padding: var(--section-padding-top, 60px) 40px var(--section-padding-bottom, 60px);
+    background: var(--section-bg, #ffffff);
+    box-sizing: border-box;
+  }
+  
+  /* Desktop Layout Direction */
+  .ams-carousel--desktop-rtl .ams-carousel__container {
+    flex-direction: row-reverse;
+  }
+  
+  .ams-carousel__container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--panel-gap, 24px);
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+  
+  /* LEFT PANEL */
+  .ams-carousel__left-panel {
+    flex: 0 0 280px;
+    min-width: 280px;
+    background: var(--left-panel-bg, #ffffff);
+    border-radius: var(--left-panel-border-radius, 12px);
+    padding: var(--left-panel-padding-top, 24px) var(--left-panel-padding-right, 24px) var(--left-panel-padding-bottom, 24px) var(--left-panel-padding-left, 24px);
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .ams-carousel__left-content {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .ams-carousel__heading {
+    font-size: var(--font-title-size, 2rem);
+    font-weight: var(--font-title-weight, 700);
+    color: var(--left-panel-text, #000000);
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--font-title);
+  }
+  
+  .ams-carousel__description {
+    font-size: var(--font-desc-size, 1rem);
+    font-weight: var(--font-desc-weight, 400);
+    color: var(--left-panel-text, #000000);
+    opacity: 0.7;
+    line-height: 1.6;
+    margin: 0;
+    font-family: var(--font-desc);
+  }
+  
+  .ams-carousel__button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--button-bg, #000000);
+    color: var(--button-text, #ffffff);
+    text-decoration: none;
+    font-size: var(--font-btn-size, 0.95rem);
+    font-weight: var(--font-btn-weight, 600);
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    font-family: var(--font-btn);
+  }
+  
+  .ams-carousel__button:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+  
+  .ams-carousel__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--left-panel-text, #000000);
+    text-decoration: none;
+    font-size: var(--font-viewall-size, 0.95rem);
+    font-weight: var(--font-viewall-weight, 600);
+    transition: color 0.3s ease;
+    font-family: var(--font-viewall);
+  }
+  
+  .ams-carousel__view-all:hover {
+    opacity: 0.7;
+  }
+  
+  .ams-carousel__view-all svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .ams-carousel__view-all:hover svg {
+    transform: translateX(4px);
+  }
+  
+  /* RIGHT PANEL - CAROUSEL */
+  .ams-carousel__right-panel {
+    flex: 1;
+    min-width: 0;
+    background: var(--right-panel-bg, #ffffff);
+    border-radius: var(--right-panel-border-radius, 12px);
+    padding: var(--slider-padding-top, 20px) var(--slider-padding-right, 20px) var(--slider-padding-bottom, 20px) var(--slider-padding-left, 20px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ams-carousel__carousel-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  
+  /* NAVIGATION ARROWS - Absolutely Positioned */
+  .ams-carousel__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--arrow-size, 40px);
+    height: var(--arrow-size, 40px);
+    border: none;
+    background: var(--arrow-bg, #ffffff);
+    color: var(--arrow-color, #000000);
+    border-radius: var(--arrow-border-radius, 50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ams-carousel__arrow--prev {
+    left: var(--arrow-offset, 12px);
+  }
+  
+  .ams-carousel__arrow--next {
+    right: var(--arrow-offset, 12px);
+  }
+  
+  .ams-carousel__arrow:hover {
+    opacity: 0.85;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .ams-carousel__arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .ams-carousel__arrow svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* VIEWPORT & TRACK */
+  .ams-carousel__viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .ams-carousel__track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform;
+    cursor: grab;
+    gap: var(--card-gap, 20px);
+  }
+  
+  .ams-carousel__track:active {
+    cursor: grabbing;
+  }
+  
+  /* SLIDES */
+  .ams-carousel__slide {
+    flex: 0 0 calc((100% - (var(--card-gap, 20px) * (var(--desktop-cards, 4) - 1))) / var(--desktop-cards, 4));
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  
+  /* PRODUCT CARD */
+  .ams-carousel__card {
+    background: var(--card-bg, #f5f5f5);
+    border-radius: var(--card-border-radius, 12px);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ams-carousel__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* CARD IMAGE */
+  .ams-carousel__card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: var(--image-aspect, 1 / 1);
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  
+  .ams-carousel__card-image-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  .ams-carousel__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .ams-carousel__card:hover .ams-carousel__card-image {
+    transform: scale(1.05);
+  }
+  
+  .ams-carousel__card-image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8e8e8;
+    color: #999;
+  }
+  
+  .ams-carousel__placeholder-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* BADGES */
+  .ams-carousel__badge {
+    position: absolute;
+    padding: 6px 10px;
+    font-size: var(--font-sale-badge-size, 0.75rem);
+    font-weight: var(--font-sale-badge-weight, 700);
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 5;
+  }
+  
+  .ams-carousel__badge--sale {
+    top: 10px;
+    left: 10px;
+    background: var(--sale-badge-color, #e74c3c);
+    color: #ffffff;
+    font-family: var(--font-sale-badge);
+    font-size: var(--font-sale-badge-size, 0.75rem);
+    font-weight: var(--font-sale-badge-weight, 700);
+  }
+  
+  .ams-carousel__badge--new {
+    top: 10px;
+    left: 10px;
+    background: #27ae60;
+    color: #ffffff;
+  }
+  
+  .ams-carousel__badge--bestseller {
+    top: 10px;
+    right: 10px;
+    background: #f39c12;
+    color: #ffffff;
+  }
+  
+  .ams-carousel__badge--soldout {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--soldout-badge-color, #333333);
+    color: #ffffff;
+    padding: 10px 16px;
+    font-family: var(--font-soldout-badge);
+    font-size: var(--font-soldout-badge-size, 0.85rem);
+    font-weight: var(--font-soldout-badge-weight, 700);
+  }
+  
+  /* QUICK VIEW BUTTON */
+  .ams-carousel__quick-view {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 5;
+    color: #1a1a2e;
+  }
+  
+  .ams-carousel__card:hover .ams-carousel__quick-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .ams-carousel__quick-view:hover {
+    background: #1a1a2e;
+    color: #ffffff;
+  }
+  
+  /* CARD CONTENT */
+  .ams-carousel__card-content {
+    padding: var(--card-padding, 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+  
+  .ams-carousel__card-title {
+    font-size: var(--font-product-title-size, 0.95rem);
+    font-weight: var(--font-product-title-weight, 600);
+    color: var(--card-text, #000000);
+    margin: 0;
+    line-height: 1.4;
+    font-family: var(--font-product-title);
+  }
+  
+  .ams-carousel__card-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .ams-carousel__card-title a:hover {
+    opacity: 0.7;
+  }
+  
+  /* PRICE */
+  .ams-carousel__card-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .ams-carousel__price {
+    font-size: var(--font-product-price-size, 1rem);
+    font-weight: var(--font-product-price-weight, 700);
+    color: var(--card-text, #000000);
+    font-family: var(--font-product-price);
+  }
+  
+  .ams-carousel__price--sale {
+    color: #e74c3c;
+  }
+  
+  .ams-carousel__price--compare {
+    font-size: 0.85rem;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+  
+  /* CARD BUTTON */
+  .ams-carousel__card-action {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  
+  .ams-carousel__card-button {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--button-bg, #000000);
+    color: var(--button-text, #ffffff);
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-atc-size, 0.85rem);
+    font-weight: var(--font-atc-weight, 600);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-family: var(--font-atc);
+  }
+  
+  .ams-carousel__card-button:hover {
+    opacity: 0.85;
+  }
+  
+  .ams-carousel__card-button--secondary {
+    background: #e0e0e0;
+    color: var(--card-text, #000000);
+  }
+  
+  .ams-carousel__card-button--secondary:hover {
+    background: #d0d0d0;
+  }
+  
+  /* PAGINATION */
+  .ams-carousel__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+  
+  .ams-carousel__pagination-dot {
+    width: var(--pagination-dot-size, 8px);
+    height: var(--pagination-dot-size, 8px);
+    border-radius: 50%;
+    background: var(--pagination-inactive, #cccccc);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  
+  .ams-carousel__pagination-dot:hover {
+    opacity: 0.7;
+  }
+  
+  .ams-carousel__pagination-dot--active {
+    background: var(--pagination-active, #000000);
+    transform: scale(1.2);
+  }
+  
+  /* PROGRESS BAR (for autoplay) */
+  .ams-carousel__progress {
+    width: 100%;
+    height: 3px;
+    background: var(--pagination-inactive, #cccccc);
+    border-radius: 2px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  
+  .ams-carousel__progress-bar {
+    height: 100%;
+    background: var(--pagination-active, #000000);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+  
+  /* REDUCED MOTION */
+  .ams-carousel[data-reduced-motion="true"] .ams-carousel__track {
+    transition: none;
+  }
+  
+  .ams-carousel[data-reduced-motion="true"] .ams-carousel__card-image {
+    transition: none;
+  }
+  
+  .ams-carousel[data-reduced-motion="true"] .ams-carousel__card {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .ams-carousel[data-reduced-motion="true"] .ams-carousel__card:hover {
+    transform: none;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .ams-carousel .ams-carousel__track {
+      transition: none;
+    }
+    
+    .ams-carousel .ams-carousel__card-image {
+      transition: none;
+    }
+    
+    .ams-carousel .ams-carousel__card {
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .ams-carousel .ams-carousel__card:hover {
+      transform: none;
+    }
+  }
+  
+  /* TABLET STYLES */
+  @media (max-width: 1024px) {
+    .ams-carousel {
+      --desktop-cards: var(--tablet-cards, 2);
+    }
+    
+    .ams-carousel__slide {
+      flex: 0 0 calc((100% - (var(--card-gap, 20px) * (var(--tablet-cards, 2) - 1))) / var(--tablet-cards, 2));
+      min-width: 0;
+    }
+    
+    .ams-carousel__left-panel {
+      flex: 0 0 220px;
+      min-width: 220px;
+    }
+    
+    .ams-carousel__container {
+      gap: var(--panel-gap, 24px);
+    }
+    
+    .ams-carousel__heading {
+      font-size: 1.75rem;
+    }
+  }
+  
+  /* MOBILE STYLES */
+  @media (max-width: 768px) {
+    .ams-carousel {
+      padding: var(--section-padding-top, 40px) 16px var(--section-padding-bottom, 40px);
+      --desktop-cards: var(--mobile-cards, 1);
+      --font-title-size: var(--font-title-size-mobile, 24px);
+      --font-desc-size: var(--font-desc-size-mobile, 14px);
+      --font-btn-size: var(--font-btn-size-mobile, 14px);
+      --font-viewall-size: var(--font-viewall-size-mobile, 14px);
+      --font-product-title-size: var(--font-product-title-size-mobile, 14px);
+      --font-product-price-size: var(--font-product-price-size-mobile, 14px);
+      --font-atc-size: var(--font-atc-size-mobile, 13px);
+    }
+    
+    /* Mobile Layout Direction */
+    .ams-carousel--mobile-bottom .ams-carousel__container {
+      flex-direction: column-reverse;
+    }
+    
+    .ams-carousel__container {
+      flex-direction: column;
+      gap: var(--mobile-panel-gap, 20px);
+    }
+    
+    .ams-carousel__left-panel {
+      flex: none;
+      min-width: 100%;
+    }
+    
+    .ams-carousel__left-content {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .ams-carousel__heading {
+      font-size: var(--font-title-size-mobile, 1.5rem);
+      flex: 1 1 100%;
+    }
+    
+    .ams-carousel__description {
+      flex: 1 1 100%;
+    }
+    
+    .ams-carousel__button {
+      padding: 12px 24px;
+    }
+    
+    /* Mobile card width - proper calculation */
+    .ams-carousel__slide {
+      flex: 0 0 calc((100% - (var(--card-gap, 20px) * (var(--mobile-cards, 1) - 1))) / var(--mobile-cards, 1));
+      max-width: none;
+      min-width: 0;
+    }
+    
+    /* Mobile arrows - centered on image area */
+    .ams-carousel__slider-outer {
+      position: relative;
+    }
+    
+    .ams-carousel__arrow {
+      width: var(--arrow-size, 36px);
+      height: var(--arrow-size, 36px);
+      display: flex;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    
+    .ams-carousel__arrow--prev {
+      left: 8px;
+    }
+    
+    .ams-carousel__arrow--next {
+      right: 8px;
+    }
+    
+    /* Hide arrows on mobile if disabled */
+    .ams-carousel--no-mobile-arrows .ams-carousel__arrow {
+      display: none;
+    }
+    
+    .ams-carousel__quick-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Fix button overflow on mobile cards */
+    .ams-carousel__card-content {
+      padding: var(--card-padding, 12px);
+    }
+    
+    .ams-carousel__card-button {
+      width: 100%;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: var(--font-atc-size-mobile, 13px);
+      padding: 10px 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    class AMSCarousel {
+      constructor(container) {
+        this.container = container;
+        this.track = container.querySelector('[data-carousel-track]');
+        this.slides = container.querySelectorAll('[data-carousel-slide]');
+        this.prevBtn = container.querySelector('.ams-carousel__arrow--prev');
+        this.nextBtn = container.querySelector('.ams-carousel__arrow--next');
+        this.paginationContainer = container.querySelector('[data-carousel-pagination]');
+        
+        this.currentIndex = 0;
+        this.slidesPerView = this.getSlidesPerView();
+        this.totalSlides = this.slides.length;
+        this.maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+        
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        this.dragStartX = 0;
+        this.isDragging = false;
+        
+        this.autoplay = container.dataset.autoplay === 'true';
+        this.autoplaySpeed = parseInt(container.dataset.autoplaySpeed) || 5000;
+        this.infinite = container.dataset.infinite === 'true';
+        this.reducedMotion = container.dataset.reducedMotion === 'true';
+        this.autoplayTimer = null;
+        this.progressInterval = null;
+        this.progressValue = 0;
+        this.isHovered = false;
+        
+        this.init();
+      }
+      
+      getSlidesPerView() {
+        const width = window.innerWidth;
+        const desktopCards = parseInt(this.container.dataset.desktopCards) || 4;
+        const tabletCards = parseInt(this.container.dataset.tabletCards) || 2;
+        const mobileCards = parseInt(this.container.dataset.mobileCards) || 1;
+        
+        if (width <= 768) return mobileCards;
+        if (width <= 1024) return tabletCards;
+        return desktopCards;
+      }
+      
+      init() {
+        if (this.totalSlides === 0) return;
+        
+        this.createPagination();
+        this.createProgressBar();
+        this.bindEvents();
+        this.updateCarousel();
+        
+        if (this.autoplay) {
+          this.startAutoplay();
+        }
+        
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const newSlidesPerView = this.getSlidesPerView();
+            if (newSlidesPerView !== this.slidesPerView) {
+              this.slidesPerView = newSlidesPerView;
+              this.maxIndex = Math.max(0, this.totalSlides - this.slidesPerView);
+              this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+              this.createPagination();
+              this.updateCarousel();
+            }
+          }, 150);
+        });
+      }
+      
+      createPagination() {
+        if (!this.paginationContainer) return;
+        this.paginationContainer.innerHTML = '';
+        const totalDots = this.maxIndex + 1;
+        
+        for (let i = 0; i < totalDots; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'ams-carousel__pagination-dot';
+          dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          dot.addEventListener('click', () => this.goToSlide(i));
+          this.paginationContainer.appendChild(dot);
+        }
+        
+        this.paginationDots = this.paginationContainer.querySelectorAll('.ams-carousel__pagination-dot');
+      }
+      
+      createProgressBar() {
+        if (!this.autoplay) return;
+        
+        this.progressBar = document.createElement('div');
+        this.progressBar.className = 'ams-carousel__progress';
+        this.progressBar.innerHTML = '<div class="ams-carousel__progress-bar"></div>';
+        this.container.querySelector('.ams-carousel__right-panel').appendChild(this.progressBar);
+        this.progressBarInner = this.progressBar.querySelector('.ams-carousel__progress-bar');
+      }
+      
+      bindEvents() {
+        if (this.prevBtn) {
+          this.prevBtn.addEventListener('click', () => this.prev());
+        }
+        if (this.nextBtn) {
+          this.nextBtn.addEventListener('click', () => this.next());
+        }
+        
+        if (this.track) {
+          this.track.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+          this.track.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: true });
+          this.track.addEventListener('touchend', (e) => this.handleTouchEnd(e));
+          
+          this.track.addEventListener('mousedown', (e) => this.handleMouseDown(e));
+          this.track.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+          this.track.addEventListener('mouseup', (e) => this.handleMouseUp(e));
+          this.track.addEventListener('mouseleave', (e) => this.handleMouseUp(e));
+        }
+        
+        this.container.setAttribute('tabindex', '0');
+        this.container.addEventListener('keydown', (e) => this.handleKeydown(e));
+        
+        if (this.autoplay) {
+          this.container.addEventListener('mouseenter', () => {
+            this.isHovered = true;
+            this.pauseAutoplay();
+          });
+          
+          this.container.addEventListener('mouseleave', () => {
+            this.isHovered = false;
+            this.startAutoplay();
+          });
+        }
+        
+        this.initQuickView();
+      }
+      
+      initQuickView() {
+        const quickViewButtons = this.container.querySelectorAll('[data-quick-view]');
+        quickViewButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const handle = btn.dataset.productHandle;
+            this.openQuickView(handle);
+          });
+        });
+      }
+      
+      openQuickView(handle) {
+        const quickViewModal = document.createElement('div');
+        quickViewModal.className = 'ams-carousel__quick-view-modal';
+        quickViewModal.innerHTML = `
+          <div class="ams-carousel__quick-view-overlay"></div>
+          <div class="ams-carousel__quick-view-content">
+            <button class="ams-carousel__quick-view-close" aria-label="Close quick view">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="ams-carousel__quick-view-loader">Loading...</div>
+          </div>
+        `;
+        document.body.appendChild(quickViewModal);
+        document.body.style.overflow = 'hidden';
+        
+        fetch(`/products/${handle}?view=quick-view`)
+          .then(response => response.text())
+          .then(html => {
+            quickViewModal.querySelector('.ams-carousel__quick-view-content').innerHTML = `
+              <button class="ams-carousel__quick-view-close" aria-label="Close quick view">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </button>
+              ${html}
+            `;
+          })
+          .catch(() => {
+            quickViewModal.querySelector('.ams-carousel__quick-view-loader').textContent = 'Unable to load product';
+          });
+        
+        const closeModal = () => {
+          quickViewModal.remove();
+          document.body.style.overflow = '';
+        };
+        
+        quickViewModal.querySelector('.ams-carousel__quick-view-overlay').addEventListener('click', closeModal);
+        quickViewModal.addEventListener('click', (e) => {
+          if (e.target.closest('.ams-carousel__quick-view-close')) {
+            closeModal();
+          }
+        });
+        
+        document.addEventListener('keydown', function escHandler(e) {
+          if (e.key === 'Escape') {
+            closeModal();
+            document.removeEventListener('keydown', escHandler);
+          }
+        });
+      }
+      
+      startAutoplay() {
+        if (!this.autoplay || this.isHovered) return;
+        
+        this.stopAutoplay();
+        this.progressValue = 0;
+        
+        this.autoplayTimer = setInterval(() => {
+          if (this.infinite) {
+            this.currentIndex = (this.currentIndex + 1) % (this.maxIndex + 1);
+          } else {
+            if (this.currentIndex >= this.maxIndex) {
+              this.currentIndex = 0;
+            } else {
+              this.currentIndex++;
+            }
+          }
+          this.updateCarousel();
+          this.progressValue = 0;
+        }, this.autoplaySpeed);
+        
+        if (this.progressBarInner) {
+          this.progressInterval = setInterval(() => {
+            this.progressValue += 100 / (this.autoplaySpeed / 100);
+            this.progressBarInner.style.width = this.progressValue + '%';
+          }, 100);
+        }
+      }
+      
+      pauseAutoplay() {
+        this.stopAutoplay();
+      }
+      
+      stopAutoplay() {
+        if (this.autoplayTimer) {
+          clearInterval(this.autoplayTimer);
+          this.autoplayTimer = null;
+        }
+        if (this.progressInterval) {
+          clearInterval(this.progressInterval);
+          this.progressInterval = null;
+        }
+        if (this.progressBarInner) {
+          this.progressBarInner.style.width = '0%';
+        }
+        this.progressValue = 0;
+      }
+      
+      handleTouchStart(e) {
+        this.touchStartX = e.touches[0].clientX;
+        this.isDragging = true;
+        if (this.autoplay) this.pauseAutoplay();
+      }
+      
+      handleTouchMove(e) {
+        if (!this.isDragging) return;
+        this.touchEndX = e.touches[0].clientX;
+      }
+      
+      handleTouchEnd(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.handleSwipe();
+        if (this.autoplay && !this.isHovered) this.startAutoplay();
+      }
+      
+      handleMouseDown(e) {
+        e.preventDefault();
+        this.touchStartX = e.clientX;
+        this.dragStartX = e.clientX;
+        this.isDragging = true;
+        this.track.style.cursor = 'grabbing';
+        this.track.style.transition = 'none';
+        if (this.autoplay) this.pauseAutoplay();
+      }
+      
+      handleMouseMove(e) {
+        if (!this.isDragging) return;
+        this.touchEndX = e.clientX;
+        
+        // Live preview of drag position
+        const diff = this.dragStartX - this.touchEndX;
+        const slideRect = this.slides[0].getBoundingClientRect();
+        const slideWidth = slideRect.width;
+        const trackStyle = window.getComputedStyle(this.track);
+        const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.getPropertyValue('--card-gap')) || 20;
+        
+        // Calculate current translate value
+        const currentTranslate = this.currentIndex * (slideWidth + gap);
+        const newTranslate = currentTranslate + diff;
+        const maxTranslate = this.maxIndex * (slideWidth + gap);
+        
+        // Clamp to valid range
+        const clampedTranslate = Math.max(0, Math.min(newTranslate, maxTranslate));
+        this.track.style.transform = `translateX(-${clampedTranslate}px)`;
+      }
+      
+      handleMouseUp(e) {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.track.style.cursor = 'grab';
+        this.track.style.transition = 'transform 0.4s ease';
+        
+        // Snap to nearest slide
+        const diff = this.dragStartX - e.clientX;
+        const slideRect = this.slides[0].getBoundingClientRect();
+        const slideWidth = slideRect.width;
+        const trackStyle = window.getComputedStyle(this.track);
+        const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.getPropertyValue('--card-gap')) || 20;
+        const threshold = (slideWidth + gap) / 3;
+        
+        if (diff > threshold && this.currentIndex < this.maxIndex) {
+          this.currentIndex++;
+        } else if (diff < -threshold && this.currentIndex > 0) {
+          this.currentIndex--;
+        }
+        
+        this.updateCarousel();
+        if (this.autoplay && !this.isHovered) this.startAutoplay();
+      }
+      
+      handleSwipe() {
+        const diff = this.touchStartX - this.touchEndX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            this.next();
+          } else {
+            this.prev();
+          }
+        }
+        
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+      }
+      
+      handleKeydown(e) {
+        if (e.key === 'ArrowLeft') {
+          this.prev();
+        } else if (e.key === 'ArrowRight') {
+          this.next();
+        }
+      }
+      
+      prev() {
+        if (this.infinite && this.currentIndex === 0) {
+          this.currentIndex = this.maxIndex;
+        } else if (this.currentIndex > 0) {
+          this.currentIndex--;
+        }
+        this.updateCarousel();
+        if (this.autoplay) {
+          this.progressValue = 0;
+        }
+      }
+      
+      next() {
+        if (this.infinite && this.currentIndex >= this.maxIndex) {
+          this.currentIndex = 0;
+        } else if (this.currentIndex < this.maxIndex) {
+          this.currentIndex++;
+        }
+        this.updateCarousel();
+        if (this.autoplay) {
+          this.progressValue = 0;
+        }
+      }
+      
+      goToSlide(index) {
+        this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
+        this.updateCarousel();
+        if (this.autoplay) {
+          this.progressValue = 0;
+        }
+      }
+      
+      updateCarousel() {
+        if (!this.slides || this.slides.length === 0) return;
+        
+        // Get slide width from first slide's bounding rect (includes actual rendered width)
+        const slideRect = this.slides[0].getBoundingClientRect();
+        const slideWidth = slideRect.width;
+        
+        // Get gap from CSS variable
+        const trackStyle = window.getComputedStyle(this.track);
+        const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.getPropertyValue('--card-gap')) || 20;
+        
+        // CORRECT formula: each step = slide width + gap
+        const translateX = -this.currentIndex * (slideWidth + gap);
+        this.track.style.transform = `translateX(${translateX}px)`;
+        
+        if (!this.infinite) {
+          if (this.prevBtn) this.prevBtn.disabled = this.currentIndex === 0;
+          if (this.nextBtn) this.nextBtn.disabled = this.currentIndex >= this.maxIndex;
+        } else {
+          if (this.prevBtn) this.prevBtn.disabled = false;
+          if (this.nextBtn) this.nextBtn.disabled = false;
+        }
+        
+        if (this.paginationDots) {
+          this.paginationDots.forEach((dot, index) => {
+            dot.classList.toggle('ams-carousel__pagination-dot--active', index === this.currentIndex);
+          });
+        }
+      }
+    }
+    
+    document.querySelectorAll('.ams-carousel').forEach(container => {
+      new AMSCarousel(container);
+    });
+    
+    if (typeof Shopify !== 'undefined' && Shopify.designMode) {
+      document.addEventListener('shopify:section:load', (e) => {
+        const container = e.target.querySelector('.ams-carousel');
+        if (container) {
+          new AMSCarousel(container);
+        }
+      });
+    }
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "AMS Carousel",
+  "tag": "section",
+  "class": "ams-carousel-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "🎨 Section Background"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 60,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "📋 Left Info Panel"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Collection Title",
+      "default": "Featured Collection"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "Discover our handpicked selection of premium products designed to elevate your style."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View All Label",
+      "default": "View All Products"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View All URL"
+    },
+    {
+      "type": "color",
+      "id": "left_panel_background",
+      "label": "Panel Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "left_panel_text_color",
+      "label": "Panel Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "left_panel_border_radius",
+      "label": "Panel Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "left_panel_padding_top",
+      "label": "Panel Padding Top",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "left_panel_padding_bottom",
+      "label": "Panel Padding Bottom",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "left_panel_padding_left",
+      "label": "Panel Padding Left",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "left_panel_padding_right",
+      "label": "Panel Padding Right",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "🎠 Slider Settings"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Maximum Products",
+      "min": 4,
+      "max": 40,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "desktop_cards",
+      "label": "Desktop Cards Per View",
+      "options": [
+        { "value": "2", "label": "2 cards" },
+        { "value": "3", "label": "3 cards" },
+        { "value": "4", "label": "4 cards" },
+        { "value": "5", "label": "5 cards" },
+        { "value": "6", "label": "6 cards" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "tablet_cards",
+      "label": "Tablet Cards Per View",
+      "options": [
+        { "value": "2", "label": "2 cards" },
+        { "value": "3", "label": "3 cards" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "mobile_cards",
+      "label": "Mobile Cards Per View",
+      "options": [
+        { "value": "1", "label": "1 card" },
+        { "value": "2", "label": "2 cards" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap Between Cards",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "right_panel_background",
+      "label": "Slider Panel Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "right_panel_border_radius",
+      "label": "Slider Panel Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_top",
+      "label": "Slider Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_bottom",
+      "label": "Slider Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_left",
+      "label": "Slider Padding Left",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "slider_padding_right",
+      "label": "Slider Padding Right",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "⬅️ Navigation Arrows"
+    },
+    {
+      "type": "range",
+      "id": "arrow_offset",
+      "label": "Arrow Distance From Edge",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow Button Size",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background_color",
+      "label": "Arrow Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_icon_color",
+      "label": "Arrow Icon Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "arrow_border_radius",
+      "label": "Arrow Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows_mobile",
+      "label": "Show Arrows on Mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "⚫ Pagination Bar"
+    },
+    {
+      "type": "color",
+      "id": "pagination_inactive_color",
+      "label": "Pagination Dot — Inactive Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "pagination_active_color",
+      "label": "Pagination Dot — Active Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "pagination_dot_size",
+      "label": "Pagination Dot Size",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "🃏 Product Card"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card Padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show Product Badges",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_color",
+      "label": "Sale Badge Color",
+      "default": "#e74c3c"
+    },
+    {
+      "type": "color",
+      "id": "soldout_badge_color",
+      "label": "Sold Out Badge Color",
+      "default": "#333333"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show Price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "Show Add to Cart Button",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        { "value": "square", "label": "Square (1:1)" },
+        { "value": "portrait", "label": "Portrait (4:5)" },
+        { "value": "landscape", "label": "Landscape (4:3)" }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "header",
+      "content": "↔️ Layout Direction"
+    },
+    {
+      "type": "select",
+      "id": "desktop_layout_direction",
+      "label": "Desktop Layout Direction",
+      "options": [
+        { "value": "ltr", "label": "Left Panel → Right Slider" },
+        { "value": "rtl", "label": "Right Slider → Left Panel" }
+      ],
+      "default": "ltr"
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout_direction",
+      "label": "Mobile Layout Direction",
+      "options": [
+        { "value": "top", "label": "Info Panel on Top" },
+        { "value": "bottom", "label": "Info Panel on Bottom" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "range",
+      "id": "mobile_panel_gap",
+      "label": "Mobile Gap Between Info & Slider",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "panel_gap",
+      "label": "Gap Between Left & Right Panel",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "🔤 Font Settings"
+    },
+    {
+      "type": "header",
+      "content": "— Collection Title Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "title_use_google_font",
+      "label": "Use Google Font for Collection Title",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title_google_font_url",
+      "label": "Google Font Embed URL — Title",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "title_google_font_family",
+      "label": "Google Font Family Name — Title",
+      "placeholder": "Playfair Display"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font Weight — Title",
+      "options": [
+        { "value": "300", "label": "Light (300)" },
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Font Size Desktop — Title",
+      "min": 12,
+      "max": 72,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font Size Mobile — Title",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Description Text Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "desc_use_google_font",
+      "label": "Use Google Font for Description",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "desc_google_font_url",
+      "label": "Google Font Embed URL — Description",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "desc_google_font_family",
+      "label": "Google Font Family Name — Description",
+      "placeholder": "Lato"
+    },
+    {
+      "type": "select",
+      "id": "desc_font_weight",
+      "label": "Font Weight — Description",
+      "options": [
+        { "value": "300", "label": "Light (300)" },
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size_desktop",
+      "label": "Font Size Desktop — Description",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size_mobile",
+      "label": "Font Size Mobile — Description",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— CTA Button Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_use_google_font",
+      "label": "Use Google Font for CTA Button",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "btn_google_font_url",
+      "label": "Google Font Embed URL — CTA Button",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "btn_google_font_family",
+      "label": "Google Font Family Name — CTA Button",
+      "placeholder": "Montserrat"
+    },
+    {
+      "type": "select",
+      "id": "btn_font_weight",
+      "label": "Font Weight — CTA Button",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size_desktop",
+      "label": "Font Size Desktop — CTA Button",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size_mobile",
+      "label": "Font Size Mobile — CTA Button",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— View All Link Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "viewall_use_google_font",
+      "label": "Use Google Font for View All Link",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "viewall_google_font_url",
+      "label": "Google Font Embed URL — View All",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "viewall_google_font_family",
+      "label": "Google Font Family Name — View All",
+      "placeholder": "Open Sans"
+    },
+    {
+      "type": "select",
+      "id": "viewall_font_weight",
+      "label": "Font Weight — View All",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "viewall_font_size_desktop",
+      "label": "Font Size Desktop — View All",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "viewall_font_size_mobile",
+      "label": "Font Size Mobile — View All",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Product Title Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_title_use_google_font",
+      "label": "Use Google Font for Product Title",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "product_title_google_font_url",
+      "label": "Google Font Embed URL — Product Title",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "product_title_google_font_family",
+      "label": "Google Font Family Name — Product Title",
+      "placeholder": "Poppins"
+    },
+    {
+      "type": "select",
+      "id": "product_title_font_weight",
+      "label": "Font Weight — Product Title",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "product_title_font_size_desktop",
+      "label": "Font Size Desktop — Product Title",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_title_font_size_mobile",
+      "label": "Font Size Mobile — Product Title",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Product Price Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "product_price_use_google_font",
+      "label": "Use Google Font for Product Price",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "product_price_google_font_url",
+      "label": "Google Font Embed URL — Product Price",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "product_price_google_font_family",
+      "label": "Google Font Family Name — Product Price",
+      "placeholder": "Roboto Mono"
+    },
+    {
+      "type": "select",
+      "id": "product_price_font_weight",
+      "label": "Font Weight — Product Price",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "product_price_font_size_desktop",
+      "label": "Font Size Desktop — Product Price",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "product_price_font_size_mobile",
+      "label": "Font Size Mobile — Product Price",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Add to Cart Button Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "atc_use_google_font",
+      "label": "Use Google Font for Add to Cart Button",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "atc_google_font_url",
+      "label": "Google Font Embed URL — ATC Button",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "atc_google_font_family",
+      "label": "Google Font Family Name — ATC Button",
+      "placeholder": "Inter"
+    },
+    {
+      "type": "select",
+      "id": "atc_font_weight",
+      "label": "Font Weight — ATC Button",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "atc_font_size_desktop",
+      "label": "Font Size Desktop — ATC Button",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "atc_font_size_mobile",
+      "label": "Font Size Mobile — ATC Button",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "default": 13,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Sale Badge Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "sale_badge_use_google_font",
+      "label": "Use Google Font for Sale Badge",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_google_font_url",
+      "label": "Google Font Embed URL — Sale Badge",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_google_font_family",
+      "label": "Google Font Family Name — Sale Badge",
+      "placeholder": "Oswald"
+    },
+    {
+      "type": "select",
+      "id": "sale_badge_font_weight",
+      "label": "Font Weight — Sale Badge",
+      "options": [
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "sale_badge_font_size",
+      "label": "Font Size — Sale Badge",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "default": 11,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "— Sold Out Badge Font"
+    },
+    {
+      "type": "checkbox",
+      "id": "soldout_badge_use_google_font",
+      "label": "Use Google Font for Sold Out Badge",
+      "info": "Turn ON for Google Font. Turn OFF for Theme Font.",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "soldout_badge_google_font_url",
+      "label": "Google Font Embed URL — Sold Out Badge",
+      "placeholder": "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap"
+    },
+    {
+      "type": "text",
+      "id": "soldout_badge_google_font_family",
+      "label": "Google Font Family Name — Sold Out Badge",
+      "placeholder": "Oswald"
+    },
+    {
+      "type": "select",
+      "id": "soldout_badge_font_weight",
+      "label": "Font Weight — Sold Out Badge",
+      "options": [
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" },
+        { "value": "800", "label": "Extra Bold (800)" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "soldout_badge_font_size",
+      "label": "Font Size — Sold Out Badge",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Autoplay Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Enable Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Autoplay Speed",
+      "min": 2000,
+      "max": 9000,
+      "step": 500,
+      "default": 5000,
+      "unit": "ms"
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_loop",
+      "label": "Enable Infinite Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_view",
+      "label": "Enable Quick View",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "reduced_motion",
+      "label": "Reduce Motion",
+      "default": false,
+      "info": "Disables animations for users who prefer reduced motion"
+    }
+  ],
+  "presets": [
+    {
+      "name": "AMS Carousel"
+    }
+  ]
+}
+{% endschema %}
